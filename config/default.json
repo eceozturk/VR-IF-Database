@@ -1,0 +1,15 @@
+{
+  "webConfig": {
+    "port": 3000
+  },
+  "dbConfig": {
+    "host": "127.0.0.1",
+    "port": 27017,
+    "dbName": "dashif-db-new",
+    "aclPrefix": "acl_"
+  },
+  "constraints": {
+    "limit": 50,
+    "offset": 0
+  }
+}

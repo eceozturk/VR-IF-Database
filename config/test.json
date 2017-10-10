@@ -1,0 +1,6 @@
+{
+  "dbConfig": {
+    "dbName": "dashif-test-db",
+    "aclPrefix": "acl_"
+  }
+}

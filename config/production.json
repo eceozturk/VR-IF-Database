@@ -1,0 +1,11 @@
+{
+  "webConfig": {
+    "port": 8080
+  },
+  "dbConfig": {
+    "host": "127.0.0.1",
+    "port": 27017,
+    "dbName": "dashif-db",
+    "aclPrefix": "acl_"
+  }
+}
