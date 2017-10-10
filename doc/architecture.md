@@ -2,15 +2,15 @@
 
 ## General Infrastructure Architecture
 
-![](https://github.com/Dash-Industry-Forum/Test-Assets-Dataset/blob/master/doc/diagrams/dashif-test-assets-dataset-architecture.png)
+![](https://github.com/waqarz/VR-IF-Database/blob/master/doc/diagrams/vr-if-test-assets-dataset-architecture.png)
 
 ## Test-Assets-Dataset REST API Structure and Data Flow
 
-![](https://github.com/Dash-Industry-Forum/Test-Assets-Dataset/blob/master/doc/diagrams/dashif-test-assets-dataset-rest-api-architecture.png)
+![](https://github.com/waqarz/VR-IF-Database/blob/master/doc/diagrams/dashif-test-assets-dataset-rest-api-architecture.png)
 
 ## Components
 
-**DASH-IF Test-Asset-UI** - Is User interface or REST API client. Provides ability to view Test Assets as well as gain authorized access to maintain test assets for it's members as well as maintaining users database for Administrators. Source: [https://github.com/Dash-Industry-Forum/Test-Assets-UI](https://github.com/Dash-Industry-Forum/Test-Assets-UI). It connects directly to REST API end point. Behind that is ExpressJS router component. 
+**VR-IF Test-Asset-UI** - Is User interface or REST API client. Provides ability to view Test Assets as well as gain authorized access to maintain test assets for it's members as well as maintaining users database for Administrators. Source: [https://github.com/waqarz/VR-IF-FE](https://github.com/waqarz/VR-IF-FE). It connects directly to REST API end point. Behind that is ExpressJS router component. 
 
 **Router** - REST API Routing is based on [Express](http://expressjs.com/). Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications. Routing refers to determining how an application responds to a client request to a particular endpoint, which is a URI (or path) and a specific HTTP request method (GET, POST, and so on).
 
@@ -39,7 +39,7 @@ The JWT authentication middleware authenticates callers using a JWT. If the toke
 
 **Routes** - protected by ACL or public routes are actual business logic implementation and implements data retrieval / update or deletion. It connects directly to MongoDB Database and use Utils middleware to verify users policy before an actual action will be performed.
 
-**Data models** - A data model is an abstract model that organizes elements of data and standardizes how they relate to one another and to properties test assets. Ours data models explicitly determines the structure of data which is described in `swagger.json` see section [definitions](https://github.com/Dash-Industry-Forum/Test-Assets-Dataset/blob/master/swagger.json).
+**Data models** - A data model is an abstract model that organizes elements of data and standardizes how they relate to one another and to properties test assets. Ours data models explicitly determines the structure of data which is described in `swagger.json` see section [definitions](https://github.com/waqarz/VR-IF-Database/blob/master/swagger.json).
 
 **MongoDB Database** - Stand alone MongoDB server. Currently single instance with regular backups. We use [Mongoose](http://mongoosejs.com/) which provides a straight-forward, schema-based solution to model our application data. It includes built-in type casting, validation, query building, business logic hooks and more, out of the box.
 
@@ -50,14 +50,14 @@ The JWT authentication middleware authenticates callers using a JWT. If the toke
 Currently we have 3 types of users: 
 
 * Public users 
-* DASH-IF Member
-* DASH-IF Administrator.
+* VR-IF Member
+* VR-IF Administrator.
 
-**Public** - Public users doesn't require any permissions to get Test Assets (Test Vectors, Test Cases and Features). All other operations are not permitted. Public users not able to create test cases, delete it or edit it respectively. 
+**Public** - Public users doesn't require any permissions to get Test Assets (Test Vectors, Test Contents). All other operations are not permitted. Public users not able to create test contents, delete it or edit it respectively. 
 
-**DASH-IF Member** - Permitted to create Test Assets (Test Vectors, Test Cases and Features). Such roles permits view it's own existing assets. Currently it is located under "My Test Vectors" Tab in DASH-IF Test-Assets-UI. User is required to log in via DASH-IF Test-Assets-UI or via DASH-IF Test-Assets-Dataset REST API to get access to dedicated area for managing Test Assets.
+**VR-IF Member** - Permitted to create Test Assets (Test Vectors, Test Contents). Such roles permits view it's own existing assets. Currently it is located under "My Test Vectors" Tab in VR-IF Test-Assets-UI. User is required to log in via VR-IF Test-Assets-UI or via VR-IF Test-Assets-Dataset REST API to get access to dedicated area for managing Test Assets.
 
-**DASH-IF Admin** - Is a user which has access to Users list. It also permitted to add new user or delete and edit existing ones.
+**VR-IF Admin** - Is a user which has access to Users list. It also permitted to add new user or delete and edit existing ones.
 
 ### Access Control List
 
@@ -75,7 +75,7 @@ JWT example:
 
     {
       "_id": "575094556c3a16f112eef100",
-      "username": "dashif-admin",
+      "username": "vrif-admin",
       "roles": [
         "admin",
         "member"
@@ -99,7 +99,7 @@ JWT example:
 
 It connects directly to MongoDB Database and use Utils middleware to verify users policy before an actual action will be performed.
 
-Located at [Test-Assets-Dataset/routes](https://github.com/Dash-Industry-Forum/Test-Assets-Dataset/tree/master/routes)
+Located at [Test-Assets-Dataset/routes](https://github.com/waqarz/VR-IF-Database/tree/master/routes)
 
 | Method | Route | Description | Access |
 |--------|-------|-------------|--------|
@@ -109,18 +109,12 @@ Located at [Test-Assets-Dataset/routes](https://github.com/Dash-Industry-Forum/T
 | DELETE | /testvectors/id | Deletes Test Vector Object by id | Member, Admin |
 | GET | /mytestvectors/ | Gets current logged in user Test Vector Objects | Member, Admin |
 | POST | /mytestvectors/ | Create new Test Vector Object | Member, Admin |
-| GET | /testcases/ | Gets Test Case Objects | Public |
-| GET | /testcases/id | Gets Test Case Object by id | Member, Admin |
-| PUT | /testcases/id | Updates Test Case Object by id | Member, Admin |
-| DELETE | /testcases/id | Deletes Test Case Object by id | Member, Admin |
-| GET | /mytestcases/ | Gets current logged in user Test Case Objects | Member, Admin |
-| POST | /mytestcases/ | Create new Test Case | Member, Admin |
-| GET | /features/ | Gets Features Objects | Public |
-| GET | /features/id | Gets Feature Object by id | Member, Admin |
-| PUT | /features/id | Update Feature Object by id | Member, Admin |
-| DELETE | /features/id | Deletes Feature Object by id | Member, Admin |
-| GET | /myfeatures/ | Gets current logged in user Feature Objects | Member, Admin |
-| POST | /myfeatures/ | Create new Feature Object | Member, Admin |
+| GET | /testcontents/ | Gets Test Content Objects | Public |
+| GET | /testcontents/id | Gets Test Content Object by id | Member, Admin |
+| PUT | /testcontents/id | Updates Test Content Object by id | Member, Admin |
+| DELETE | /testcontents/id | Deletes Test Content Object by id | Member, Admin |
+| GET | /mytestcontents/ | Gets current logged in user Test Content Objects | Member, Admin |
+| POST | /mytestcontents/ | Create new Test Content | Member, Admin |
 | POST | /users/login | Login user, performs authentication / authorization. Returns JWT Token | Public |
 | GET | /users/ | Gets User Objects | Admin |
 | GET | /users/id | Get User Object by id | Admin |
@@ -129,4 +123,4 @@ Located at [Test-Assets-Dataset/routes](https://github.com/Dash-Industry-Forum/T
 
 ## Database
 
-Data model is outlined in [swagger.json](https://github.com/Dash-Industry-Forum/Test-Assets-Dataset/blob/master/swagger.json#L533).
+Data model is outlined in [swagger.json](https://github.com/waqarz/VR-IF-Database/blob/master/swagger.json#L533).
