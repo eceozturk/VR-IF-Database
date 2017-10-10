@@ -73,19 +73,19 @@ You can add your server SSH Key to git for authentication by following [adding a
 
 Choose your own method [how to obtain source code] (https://help.github.com/articles/which-remote-url-should-i-use/). In our example we cloning using HTTPs method
 
-    $ git clone https://github.com/Dash-Industry-Forum/Test-Assets-Dataset.git
-    $ cd Test-Assets-Dataset
+    $ git clone https://github.com/waqarz/VR-IF-Database.git
+    $ cd VR-IF-Database
     $ npm install
 
-You could also download ZIP Archive https://github.com/Dash-Industry-Forum/Test-Assets-Dataset/archive/master.zip 
+You could also download ZIP Archive https://github.com/waqarz/VR-IF-Database/archive/master.zip 
 
     $ unzip master.zip
-    $ cd Test-Assets-Dataset-master
+    $ cd VR-IF-Dataset-master
     $ npm install
 
 ## Configuring Database access
 
-Change MongoDB connection string in `app.js` https://github.com/Dash-Industry-Forum/Test-Assets-Dataset/blob/master/app.js#L30
+Change MongoDB connection string in `app.js` https://github.com/waqarz/VR-IF-Database/blob/master/app.js#L30
 
     var mongoose_uri = process.env.MONGOOSE_URI || "172.17.0.2/dashif-db";
 
