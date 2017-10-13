@@ -46,7 +46,7 @@ router.get('/testvector/types', function (req, res, next) {
       })
 });
 
-router.get('/testcontent/types', function (req, res, next) {
+router.get('/testcontents/types', function (req, res, next) {
     Testcontent.find({active:true})
       .then(function (docs) {
           return res.status(200).json(docs);
