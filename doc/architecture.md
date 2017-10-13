@@ -6,7 +6,7 @@
 
 ## Test-Assets-Dataset REST API Structure and Data Flow
 
-![](https://github.com/waqarz/VR-IF-Database/blob/master/doc/diagrams/dashif-test-assets-dataset-rest-api-architecture.png)
+![](https://github.com/waqarz/VR-IF-Database/blob/master/doc/diagrams/vr-if-test-assets-dataset-rest-api-architecture.png)
 
 ## Components
 
